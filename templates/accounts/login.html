@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+<!-- page banner section -->
+<section id="page-banner-section">
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="wrapper">
+      <h3 class="mb-2">Login to Your Account</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, repellat!
+      </p>
+      <!-- breadcrumb -->
+      <nav class="breadcrumb d-flex justify-content-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a class="text-decoration-none link-danger" href="{% url 'index' %}"
+              >Home</a
+            >
+          </li>
+          <li class="breadcrumb-item active">Login</li>
+        </ol>
+      </nav>
+      <!-- breadcrumb end -->
+    </div>
+  </div>
+</section>
+<!-- page banner section end -->
+<!-- login section -->
+<section id="login-section" class="bg-white">
+  <div class="container">
+    <!-- login form -->
+    <div class="login-form text-center">
+      <img class="mb-4" src="{% static 'images/logo.png' %}" alt="" />
+      {% include 'includes/messages.html' %}
+      <form class="overflow-hidden mb-5" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+          <input
+            class="form-control"
+            type="text"
+            name="username"
+            id=""
+            placeholder="Username"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            id=""
+            placeholder="Password"
+          />
+        </div>
+        <button
+          class="btn btn-danger float-end"
+          type="submit"
+          style="
+            --bs-btn-padding-y: 0.25rem;
+            --bs-btn-padding-x: 1.25rem;
+            --bs-btn-font-size: 1.25rem;
+          "
+        >
+          Login
+        </button>
+      </form>
+      <div class="overflow-hidden">
+        <span
+          >Don't have an account?<a
+            class="text-decoration-none link-danger ms-1"
+            href="{% url 'register' %}"
+            >Register Here</a
+          ></span
+        >
+      </div>
+    </div>
+    <!-- login form end -->
+  </div>
+</section>
+<!-- login section end -->
+{% endblock content %}

@@ -1,0 +1,427 @@
+{% extends 'base.html' %}
+{% block title %}{{single_bike.bike_name}}{% endblock title %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<!-- bike details section -->
+<section id="bike-details-section" class="bg-white py-5">
+  {% include 'includes/messages.html' %}
+  <div class="container">
+    <div class="row">
+      <!-- bike preview -->
+      <div class="col-12 col-lg-8 mb-5 mb-lg-0">
+        <div class="bike-preview">
+          <!-- page breadcrumb -->
+          <nav class="breadcrumb mb-1">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item">
+                <a class="text-decoration-none link-danger" href="{% url 'index' %}"
+                  >Home</a
+                >
+              </li>
+              <li class="breadcrumb-item">
+                <a
+                  class="text-decoration-none link-danger"
+                  href="{% url 'bikes' %}"
+                  >Bikes</a
+                >
+              </li>
+              <li class="breadcrumb-item active">{{single_bike.bike_name}}</li>
+            </ol>
+          </nav>
+          <!-- page breadcrumb end -->
+          <!-- heading -->
+          <div class="heading overflow-hidden mb-3">
+            <div class="float-start">
+              <h1>{{single_bike.bike_name}}</h1>
+              <h6 class="text-secondary">
+                <i class="fa-solid fa-location-dot text-danger me-1"></i
+                >{{single_bike.district}}, {{single_bike.division}} Division
+              </h6>
+            </div>
+            <div class="float-end">
+              <h3 class="fs-3 text-danger">
+                <span class="me-1">&#2547;</span>{{single_bike.price|intcomma}}
+              </h3>
+            </div>
+          </div>
+          <!-- heading end -->
+          <!-- gallery -->
+          <div id="gallery" class="carousel slide">
+            <!-- thumbnails -->
+            <div class="carousel-indicators">
+              <ul>
+                {% if single_bike.bike_photo_1 %}
+                <li>
+                  <a
+                    class="active"
+                    type="button"
+                    data-bs-target="#gallery"
+                    data-bs-slide-to="0"
+                  >
+                    <img
+                      class="img-fluid rounded"
+                      src="{{single_bike.bike_photo_1.url}}"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                {% endif %}
+                {% if single_bike.bike_photo_2 %}
+                <li>
+                  <a
+                    type="button"
+                    data-bs-target="#gallery"
+                    data-bs-slide-to="1"
+                  >
+                    <img
+                      class="img-fluid rounded"
+                      src="{{single_bike.bike_photo_2.url}}"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                {% endif %}
+                {% if single_bike.bike_photo_3 %}
+                <li>
+                  <a
+                    type="button"
+                    data-bs-target="#gallery"
+                    data-bs-slide-to="2"
+                  >
+                    <img
+                      class="img-fluid rounded"
+                      src="{{single_bike.bike_photo_3.url}}"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                {% endif %}
+                {% if single_bike.bike_photo_4 %}
+                <li>
+                  <a
+                    type="button"
+                    data-bs-target="#gallery"
+                    data-bs-slide-to="3"
+                  >
+                    <img
+                      class="img-fluid rounded"
+                      src="{{single_bike.bike_photo_4.url}}"
+                      alt=""
+                    />
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+            <!-- thumbnails end -->
+            <div class="carousel-inner">
+              {% if single_bike.bike_photo_1 %}
+              <div class="carousel-item active">
+                <img
+                  class="d-block w-100 rounded"
+                  src="{{single_bike.bike_photo_1.url}}"
+                  alt=""
+                />
+              </div>
+              {% endif %}
+              {% if single_bike.bike_photo_2 %}
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100 rounded"
+                  src="{{single_bike.bike_photo_2.url}}"
+                  alt=""
+                />
+              </div>
+              {% endif %}
+              {% if single_bike.bike_photo_3 %}
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100 rounded"
+                  src="{{single_bike.bike_photo_3.url}}"
+                  alt=""
+                />
+              </div>
+              {% endif %}
+              {% if single_bike.bike_photo_4 %}
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100 rounded"
+                  src="{{single_bike.bike_photo_4.url}}"
+                  alt=""
+                />
+              </div>
+              {% endif %}
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#gallery"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#gallery"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <!-- gallery end -->
+          <!-- bike description -->
+          <div class="bike-description mt-3">
+            <h3 class="text-danger">Description:</h3>
+            <p class="text-secondary">{{single_bike.description|safe}}</p>
+          </div>
+          <!-- bike description end -->
+        </div>
+      </div>
+      <!-- bike preview end -->
+      <!-- bike specs -->
+      <div class="col-12 col-lg-4">
+        <div class="bike-specs">
+          <div class="card">
+            <div class="card-body p-4">
+              <!-- message button -->
+              <div class="d-grid">
+                <button
+                  class="btn btn-danger text-uppercase"
+                  data-bs-toggle="modal"
+                  data-bs-target="#inquiryModal"
+                  style="--bs-btn-font-size: 1.2rem"
+                >
+                  <i class="fa-solid fa-message me-1"></i>Make an offer
+                </button>
+              </div>
+              <!-- message button end -->
+              <!-- specs -->
+              <div class="specs my-5">
+                <h3 class="h4 text-center text-danger mb-3">Specifications</h3>
+                <ul>
+                  <li class="text-secondary">
+                    <span class="text-dark">Previous Owners:</span>{{single_bike.previous_owners}}
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">CC:</span>{{single_bike.cc}}
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Color:</span>{{single_bike.color}}
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Year:</span>{{single_bike.year}}
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Mileage:</span>{{single_bike.mileage}}
+                    <span class="float-end ms-1">kmpl</span>
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Tyres Type:</span>{{single_bike.tyres_type}}
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Wheels Type:</span>{{single_bike.wheels_type}}
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Driven:</span>{{single_bike.driven|intcomma}}
+                    <span class="float-end ms-1">km</span>
+                  </li>
+                  <li class="text-secondary">
+                    <span class="text-dark">Fuel Capacity:</span>{{single_bike.fuel_capacity}}
+                    <span class="float-end ms-1">L</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- specs end -->
+              <!-- socials widget -->
+              <div class="socials-widget mt-5">
+                <h3 class="text-danger mb-3">Connect with us</h3>
+                <ul>
+                  <li>
+                    <a class="facebook-bg" href="{{setting.facebook_link}}" target="_blank"
+                      ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="twitter-bg" href="{{setting.twitter_link}}" target="_blank"
+                      ><i class="fa-brands fa-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="instagram-bg" href="{{setting.instagram_link}}" target="_blank"
+                      ><i class="fa-brands fa-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="youtube-bg" href="{{setting.youtube_link}}" target="_blank"
+                      ><i class="fa-brands fa-youtube"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="linkedin-bg" href="{{setting.linkedin_link}}" target="_blank"
+                      ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+              <!-- socials widget end -->
+            </div>
+          </div>
+          <!-- inquiry modal -->
+          <div class="inquiry-modal">
+            <div class="modal fade" id="inquiryModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="modal-header border-bottom-0 ps-0 pb-4">
+                      <img src="{% static 'images/logo.png' %}" alt="" />
+                      <button
+                        class="btn-close"
+                        type="button"
+                        data-bs-dismiss="modal"
+                      ></button>
+                    </div>
+                    <form class="row g-3 overflow-hidden" action="{% url 'inquiry' %}" method="POST">
+                      {% csrf_token %}
+                      {% if user.is_authenticated %}
+                      <input type="hidden" name="user_id" value="{{user.id}}"/>
+                      {% else %}
+                      <input type="hidden" name="user_id" value="0"/>
+                      {% endif %}
+                      <input type="hidden" name="bike_id" value="{{single_bike.id}}"/>
+                      <div class="col-6">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="first_name"
+                            id=""
+                            placeholder="First Name"
+                            {% if user.is_authenticated %} value="{{user.first_name}}" {% endif %}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="last_name"
+                            id=""
+                            placeholder="Last Name"
+                            {% if user.is_authenticated %} value="{{user.last_name}}" {% endif %}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="district"
+                            id=""
+                            placeholder="District"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="division"
+                            id=""
+                            placeholder="Division"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="email"
+                            name="email_address"
+                            id=""
+                            placeholder="Email Address"
+                            {% if user.is_authenticated %} value="{{user.email}}" {% endif %}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="phone_number"
+                            id=""
+                            placeholder="Phone Number"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            type="text"
+                            name="bike_name"
+                            id=""
+                            value="{{single_bike.bike_name}}"
+                            readonly
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="input-group">
+                          <textarea
+                            class="form-control"
+                            name="message"
+                            id=""
+                            cols="30"
+                            rows="5"
+                            placeholder="Message (Optional)"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="input-group">
+                          <span
+                            >(After sending an offer BikeKinbo team will contact
+                            with you within 24 hours)</span
+                          >
+                        </div>
+                      </div>
+                      <div class="d-grid">
+                        <button
+                          class="btn btn-danger float-end"
+                          type="submit"
+                          style="
+                            --bs-btn-padding-y: 0.25rem;
+                            --bs-btn-padding-x: 1.25rem;
+                            --bs-btn-font-size: 1.25rem;
+                          "
+                        >
+                          <i class="fa-solid fa-paper-plane me-1"></i>Send
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- inquiry modal end -->
+        </div>
+      </div>
+      <!-- bike specs end -->
+    </div>
+  </div>
+</section>
+<!-- bike details section end -->
+{% endblock content %}

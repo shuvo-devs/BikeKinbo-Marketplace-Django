@@ -1,0 +1,481 @@
+/* variables */
+:root {
+  --primary-color: #dc3545;
+  --secondary-color: #6c757d;
+  --white: #fff;
+  --gray-900: #212529;
+  --light-gray: #e3e3e3;
+}
+/* variables end */
+/* global css */
+body {
+  font-family: "Oswald", sans-serif;
+  line-height: 22px;
+}
+table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+:focus {
+  box-shadow: none !important;
+}
+input:focus,
+textarea:focus {
+  border-color: var(--primary-color) !important;
+}
+a:hover,
+button:hover {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+/* global css end */
+/* header section */
+#header-section .header-top form input {
+  background: rgb(60, 60, 60);
+  border-color: rgb(80, 80, 80);
+  border-right: 0;
+}
+#header-section .header-top form input:focus {
+  color: var(--white);
+}
+#header-section .header-top form input::placeholder {
+  color: var(--light-gray);
+}
+#header-section .header-top form button {
+  background: rgb(60, 60, 60);
+  color: var(--white);
+  border-color: rgb(80, 80, 80);
+  border-left: 0;
+}
+#header-section .header-top form button:hover {
+  color: var(--primary-color);
+}
+#header-section .main-menu button {
+  background: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+}
+#header-section .main-menu button:focus {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+#header-section .main-menu button svg {
+  padding: 4px 3px;
+}
+#header-section .main-menu ul li a {
+  color: var(--gray-900);
+}
+#header-section .main-menu ul li a:hover {
+  color: var(--secondary-color);
+}
+#header-section .main-menu ul li:last-child a {
+  padding-right: 0;
+}
+#header-section .main-menu ul li a.active {
+  color: var(--primary-color);
+}
+#header-section .main-menu ul li a.active:hover {
+  color: var(--primary-color);
+}
+/* header section end */
+/* homepage banner section */
+#home-banner-section {
+  margin-top: 110px;
+}
+#home-banner-section .banner {
+  position: relative;
+  text-align: center;
+  background: url("../images/home_banner.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 450px;
+}
+#home-banner-section .banner .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+#home-banner-section .banner .text-wrap {
+  color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+#home-banner-section .banner .text-wrap h3 {
+  font-size: 42px;
+  line-height: 60px;
+  text-shadow: 2px 2px var(--primary-color);
+}
+#home-banner-section .search-by-filter .filter-group {
+  background: var(--primary-color);
+  padding: 45px 55px;
+  border-radius: 10px;
+  position: relative;
+  top: -60;
+}
+#home-banner-section .search-by-filter .filter-group select {
+  height: 55px;
+  background: #f35b6a;
+  color: var(--white);
+  border-color: #f35b6a;
+}
+#home-banner-section .search-by-filter .filter-group button {
+  height: 55px;
+}
+/* homepage banner section end */
+/* featured bikes section */
+#featured-bikes-section .single-featured-bike .card .card-img-wrap {
+  position: relative;
+}
+#featured-bikes-section
+  .single-featured-bike
+  .card
+  .card-img-wrap
+  .featured-badge {
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  background: gold;
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 50px;
+}
+#featured-bikes-section
+  .single-featured-bike
+  .card
+  .card-img-wrap
+  .price-badge {
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 5px 15px;
+  font-size: 14px;
+}
+#featured-bikes-section .single-featured-bike .card .card-body h1 {
+  font-size: 22px;
+}
+/* featured bikes section end */
+/* owl carousel */
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel button.owl-dot {
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 4px 15px !important;
+}
+.owl-theme .owl-nav {
+  margin-top: 20px;
+}
+.owl-theme .owl-nav [class*="owl-"]:hover {
+  background: var(--secondary-color);
+}
+/* owl carousel end */
+/* latest bikes section */
+#latest-bikes-section {
+  background: #f9f9f9;
+}
+#latest-bikes-section .single-latest-bike .card .card-img-wrap {
+  position: relative;
+}
+#latest-bikes-section .single-latest-bike .card .card-img-wrap .price-badge {
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 5px 15px;
+  font-size: 14px;
+}
+#latest-bikes-section .single-latest-bike .card .card-body h1 {
+  font-size: 22px;
+}
+/* latest bikes section end */
+/* stats section */
+#stats-section {
+  padding: 80px 0;
+}
+#stats-section .single-stats img {
+  width: 125px;
+}
+#stats-section .single-stats span,
+#stats-section .single-stats h4 {
+  font-size: 35px;
+}
+/* stats section end */
+/* footer section */
+#footer-section .footer-middle .footer-about p {
+  color: var(--light-gray);
+}
+#footer-section .footer-middle .footer-about .socials ul {
+  margin: 0;
+  padding: 0;
+}
+#footer-section .footer-middle .footer-about .socials ul li {
+  text-align: center;
+  display: inline-block;
+  list-style: none;
+}
+#footer-section .footer-middle .footer-about .socials ul li a {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 4px 2px 0;
+  padding: 10px 0;
+  color: var(--light-gray);
+  border: 2px solid var(--light-gray);
+  border-radius: 50px;
+}
+#footer-section .footer-middle .footer-about .socials ul li a:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+#footer-section .footer-middle .footer-links ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+#footer-section .footer-middle .footer-links ul li a {
+  color: var(--light-gray);
+  text-decoration: none;
+}
+#footer-section .footer-middle .footer-links ul li a:hover {
+  color: var(--primary-color);
+}
+#footer-section .footer-middle .footer-contacts a,
+#footer-section .footer-middle .footer-contacts p {
+  text-decoration: none;
+  display: block;
+  color: var(--light-gray);
+}
+#footer-section .footer-bottom {
+  color: var(--light-gray);
+}
+/* footer section end */
+/* page banner section */
+#page-banner-section {
+  margin-top: 110px;
+}
+#page-banner-section .banner {
+  position: relative;
+  text-align: center;
+  background: url("../images/page_banner.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 300px;
+}
+#page-banner-section .banner .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#page-banner-section .banner .wrapper {
+  color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+#page-banner-section .banner .wrapper h3 {
+  font-size: 40px;
+  text-shadow: 2px 2px var(--primary-color);
+}
+#page-banner-section .banner .wrapper ol li {
+  font-size: 20px;
+  color: var(--light-gray);
+}
+#page-banner-section .banner .wrapper ol li::before {
+  color: var(--light-gray);
+}
+/* page banner section end */
+/* pagination */
+.page-pagination .active > .page-link,
+.page-link.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white) !important;
+}
+.page-pagination .page-link {
+  color: var(--primary-color);
+}
+/* pagination end */
+/* services section */
+#services-section .our-services .single-service .card .card-body img {
+  width: 100px;
+}
+#services-section .our-services .single-service .card .card-body p {
+  line-height: 30px;
+}
+/* services section end */
+/* contact us section */
+#contact-us-section .contact-info .contact-box-wrap .contact-box .icon {
+  font-size: 30px;
+}
+/* contact us section end */
+/* login section */
+#login-section {
+  padding: 100px 0 !important;
+}
+#login-section .login-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+#login-section .login-form .input-group .input-group-text {
+  background: var(--white);
+}
+/* login section end */
+/* register section */
+#register-section {
+  padding: 100px 0 !important;
+}
+#register-section .register-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#register-section .register-form .input-group .input-group-text {
+  background: var(--white);
+}
+/* register section end */
+/* about us section */
+#about-us-section .about-us-photos #gallery .carousel-indicators ul {
+  position: relative;
+  top: 20px;
+  margin: 0;
+  padding: 0;
+}
+#about-us-section .about-us-photos #gallery .carousel-indicators ul li {
+  max-width: 65px;
+  display: inline-block;
+  list-style: none;
+}
+#about-us-section .about-us-photos #gallery .carousel-indicators ul li a img {
+  border: 1px solid var(--secondary-color);
+}
+#about-us-section
+  .about-us-photos
+  #gallery
+  .carousel-indicators
+  ul
+  li
+  a.active
+  img {
+  border: 1px solid var(--primary-color);
+}
+#about-us-section
+  .about-us-photos
+  #gallery
+  .carousel-indicators
+  [data-bs-target] {
+  opacity: 100%;
+}
+/* about us section end */
+/* bike details section */
+#bike-details-section {
+  margin-top: 110px;
+}
+#bike-details-section .bike-preview .heading h3 {
+  margin-top: 1px;
+  margin-bottom: 0;
+}
+#bike-details-section .bike-preview #gallery .carousel-indicators ul {
+  position: relative;
+  top: 20px;
+  margin: 0;
+  padding: 0;
+}
+#bike-details-section .bike-preview #gallery .carousel-indicators ul li {
+  max-width: 65px;
+  display: inline-block;
+  list-style: none;
+}
+#bike-details-section .bike-preview #gallery .carousel-indicators ul li a img {
+  border: 1px solid var(--secondary-color);
+}
+#bike-details-section
+  .bike-preview
+  #gallery
+  .carousel-indicators
+  ul
+  li
+  a.active
+  img {
+  border: 1px solid var(--primary-color);
+}
+#bike-details-section
+  .bike-preview
+  #gallery
+  .carousel-indicators
+  [data-bs-target] {
+  opacity: 100%;
+}
+#bike-details-section .bike-specs .card .card-body .specs ul {
+  padding: 0;
+}
+#bike-details-section .bike-specs .card .card-body .specs ul li {
+  list-style: none;
+  font-size: 16px;
+  line-height: 30px !important;
+  border-bottom: 1px solid var(--light-gray);
+  text-align: right;
+  margin-bottom: 10px;
+}
+#bike-details-section .bike-specs .card .card-body .specs ul li span {
+  float: left;
+}
+/* bike details section end */
+/* socials widget */
+.socials-widget ul {
+  margin: 0;
+  padding: 0;
+}
+.socials-widget ul li {
+  text-align: center;
+  display: inline-block;
+  list-style: none;
+}
+.socials-widget ul li a {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 3px;
+  margin: 0 4px 2px 0;
+  padding: 10px 0;
+  color: var(--white);
+}
+.socials-widget ul li a:hover {
+  opacity: 0.8;
+}
+.socials-widget ul li a.facebook-bg {
+  background: #3b5998;
+}
+.socials-widget ul li a.twitter-bg {
+  background: #00acee;
+}
+.socials-widget ul li a.instagram-bg {
+  background: #cd486b;
+}
+.socials-widget ul li a.youtube-bg {
+  background: #ff0000;
+}
+.socials-widget ul li a.linkedin-bg {
+  background: #0072b1;
+}
+/* socials widget end */

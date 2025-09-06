@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock title %}
+{% block content %}
+<!-- page banner section -->
+<section id="page-banner-section">
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="wrapper">
+      <h3 class="mb-2">Create an Account</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, repellat!
+      </p>
+      <!-- breadcrumb -->
+      <nav class="breadcrumb d-flex justify-content-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a class="text-decoration-none link-danger" href="{% url 'index' %}"
+              >Home</a
+            >
+          </li>
+          <li class="breadcrumb-item active">Register</li>
+        </ol>
+      </nav>
+      <!-- breadcrumb end -->
+    </div>
+  </div>
+</section>
+<!-- page banner section end -->
+<!-- register section -->
+<section id="register-section" class="bg-white">
+  <div class="container">
+    <!-- register form -->
+    <div class="register-form text-center">
+      <img class="mb-4" src="{% static 'images/logo.png' %}" alt="" />
+      {% include 'includes/messages.html' %}
+      <form class="row g-3 overflow-hidden mb-5" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="col-6">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-user"></i
+            ></span>
+            <input
+              class="form-control"
+              type="text"
+              name="first_name"
+              id=""
+              placeholder="First Name"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-user"></i
+            ></span>
+            <input
+              class="form-control"
+              type="text"
+              name="last_name"
+              id=""
+              placeholder="Last Name"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-envelope"></i
+            ></span>
+            <input
+              class="form-control"
+              type="email"
+              name="email_address"
+              id=""
+              placeholder="Email Address"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-id-card"></i
+            ></span>
+            <input
+              class="form-control"
+              type="text"
+              name="username"
+              id=""
+              placeholder="Username"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-key"></i
+            ></span>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id=""
+              placeholder="Password"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-key"></i
+            ></span>
+            <input
+              class="form-control"
+              type="password"
+              name="confirm_password"
+              id=""
+              placeholder="Confirm Password"
+            />
+          </div>
+        </div>
+        <div class="d-grid">
+          <button
+            class="btn btn-danger float-end"
+            type="submit"
+            style="
+              --bs-btn-padding-y: 0.25rem;
+              --bs-btn-padding-x: 1.25rem;
+              --bs-btn-font-size: 1.25rem;
+            "
+          >
+            Register
+          </button>
+        </div>
+      </form>
+      <div class="overflow-hidden">
+        <span
+          >Already have an account?<a
+            class="text-decoration-none link-danger ms-1"
+            href="{% url 'login' %}"
+            >Login Here</a
+          ></span
+        >
+      </div>
+    </div>
+    <!-- register form end -->
+  </div>
+</section>
+<!-- register section end -->
+{% endblock content %}

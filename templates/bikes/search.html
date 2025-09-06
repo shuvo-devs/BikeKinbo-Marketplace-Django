@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock title %}
+{% load humanize %}
+{% block content %}
+<!-- page banner section -->
+<section id="page-banner-section">
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="wrapper">
+      <h3 class="mb-2">Search Results</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, repellat!
+      </p>
+      <!-- breadcrumb -->
+      <nav class="breadcrumb d-flex justify-content-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a class="text-decoration-none link-danger" href="{% url 'index' %}"
+              >Home</a
+            >
+          </li>
+          <li class="breadcrumb-item active">Search</li>
+        </ol>
+      </nav>
+      <!-- breadcrumb end -->
+    </div>
+  </div>
+</section>
+<!-- page banner section end -->
+<!-- latest bikes section -->
+<section id="latest-bikes-section" class="py-5">
+  <div class="container">
+    <div class="row">
+      <!-- all bikes -->
+      <div class="col-12 col-lg-8">
+        <div class="all-bikes">
+          <div class="row">
+            <!-- single latest bike -->
+            {% for bike in all_bikes %}
+            <div class="col-12 col-md-6 mb-3 mb-sm-4">
+              <div class="single-latest-bike">
+                <a class="text-decoration-none" href="{% url 'bike_details' bike.id %}">
+                  <div class="card">
+                    <div class="card-img-wrap">
+                      <img
+                        class="card-img-top"
+                        src="{{bike.bike_photo_1.url}}"
+                        alt=""
+                      />
+                      <span class="price-badge rounded"
+                        ><span class="me-1">&#2547;</span>{{bike.price|intcomma}}</span
+                      >
+                    </div>
+                    <div class="card-body my-2">
+                      <h1 class="card-title">{{bike.bike_name}}</h1>
+                      <span class="text-secondary">
+                        <i class="fa-solid fa-location-dot text-danger me-1"></i
+                        >{{bike.district}}, {{bike.division}} Division
+                      </span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="row">
+                        <div class="col">
+                          <span
+                            ><i class="fa-solid fa-motorcycle text-danger me-1"></i
+                            >{{bike.cc}}<span>cc</span></span
+                          >
+                        </div>
+                        <div class="col">
+                          <span
+                            ><i class="fa-solid fa-calendar-days text-danger me-1"></i
+                            >{{bike.year}}</span
+                          >
+                        </div>
+                        <div class="col-auto">
+                          <span
+                            ><i class="fa-solid fa-gauge text-danger me-1"></i
+                            >{{bike.driven|intcomma}}<span>km</span></span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- single latest bike end -->
+          </div>
+        </div>
+      </div>
+      <!-- all bikes end -->
+      <!-- filter options -->
+      <div class="col-12 col-lg-4 mt-5 mt-lg-0">
+        <div class="filter-options">
+          <div class="card">
+            <div class="card-body p-4">
+              <!-- filters -->
+              <div class="filters">
+                <h3 class="text-danger mb-3">
+                  Filter<i class="fa-solid fa-sort ms-2"></i>
+                </h3>
+                <form action="{% url 'search' %}">
+                  <select class="form-select mb-3" name="brand" id="" autocomplete="off">
+                    <option selected disabled>Brand</option>
+                    {% for brand in filter_search_brand %}
+                    <option value="{{brand.brand}}">{{brand.brand}}</option>
+                    {% endfor %}
+                  </select>
+                  <select class="form-select mb-3" name="district" id="" autocomplete="off">
+                    <option selected disabled>District</option>
+                    {% for district in filter_search_district %}
+                    <option value="{{district.district}}">{{district.district}}</option>
+                    {% endfor %}
+                  </select>
+                  <select class="form-select mb-3" name="year" id="" autocomplete="off">
+                    <option selected disabled>Year</option>
+                    {% for year in filter_search_year %}
+                    <option value="{{year.year}}">{{year.year}}</option>
+                    {% endfor %}
+                  </select>
+                  <select class="form-select mb-3" name="price" id="" autocomplete="off">
+                    <option selected disabled  autocomplete="off">Price</option>
+                    <option value="low_to_high" {% if filter_option == 'low_to_high' %}selected{% endif %}>Price: Low to High</option>
+                    <option value="high_to_low" {% if filter_option == 'high_to_low' %}selected{% endif %}>Price: High to Low</option>
+                  </select>
+                  <div class="d-grid">
+                    <button class="btn btn-danger" type="submit">
+                      <i class="fa-solid fa-magnifying-glass me-1"></i>Search
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <!-- filters end -->
+              <!-- socials widget -->
+              <div class="socials-widget mt-5">
+                <h3 class="text-danger mb-3">Connect with us</h3>
+                <ul>
+                  <li>
+                    <a class="facebook-bg" href="{{setting.facebook_link}}" target="_blank"
+                      ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="twitter-bg" href="{{setting.twitter_link}}" target="_blank"
+                      ><i class="fa-brands fa-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="instagram-bg" href="{{setting.instagram_link}}" target="_blank"
+                      ><i class="fa-brands fa-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="youtube-bg" href="{{setting.youtube_link}}" target="_blank"
+                      ><i class="fa-brands fa-youtube"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="linkedin-bg" href="{{setting.linkedin_link}}" target="_blank"
+                      ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+              <!-- socials widget end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- filter option end -->
+    </div>
+  </div>
+</section>
+<!-- latest bikes section end -->
+{% endblock content %}

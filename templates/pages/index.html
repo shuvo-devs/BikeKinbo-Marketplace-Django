@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% block title %}2nd Hand Bikes in Bangladesh{% endblock title %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<!-- homepage banner section -->
+<section id="home-banner-section">
+  <!-- banner -->
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="text-wrap">
+      <h3 class="mb-3">{{setting.index_banner_heading}}</h3>
+      <p class="text-white">{{setting.index_banner_sub_heading}}</p>
+    </div>
+  </div>
+  <!-- banner end -->
+  <!-- home filter search -->
+  <div class="search-by-filter">
+    <div class="container">
+      <div class="filter-group">
+        <form class="row align-items-center mb-0" action="{% url 'search' %}">
+          <div class="col-12 col-lg-5">
+            <label class="visually-hidden" for="">Brand</label>
+            <select class="form-select mb-4 mb-lg-0" name="brand" id="" autocomplete="off">
+              <option selected disabled>Brand</option>
+              {% for brand in filter_search_brand %}
+              <option value="{{brand.brand}}">{{brand.brand}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-12 col-lg-5">
+            <label class="visually-hidden" for="">City</label>
+            <select class="form-select mb-4 mb-lg-0" name="district" id="" autocomplete="off">
+              <option selected disabled>District</option>
+              {% for district in filter_search_district %}
+              <option value="{{district.district}}">{{district.district}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-12 col-lg-2">
+            <div class="d-grid">
+              <button class="btn btn-outline-light" type="submit">
+                <i class="fa-solid fa-magnifying-glass me-1"></i>Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- home filter search end -->
+</section>
+<!-- homepage banner section end -->
+<!-- featured bikes section -->
+<section id="featured-bikes-section" class="pb-5">
+  <div class="container">
+    <!-- section title -->
+    <div class="section-title text-center my-5">
+      <h3 class="fs-1">Featured<span class="text-danger ms-1">Bikes</span></h3>
+      <p class="text-secondary">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
+        fugiat.
+      </p>
+    </div>
+    <!-- section title end -->
+    <div id="featuredBikes" class="owl-carousel owl-theme">
+      <!-- single featured bike -->
+      {% for bike in featured_bikes %}
+      <div class="single-featured-bike">
+        <a class="text-decoration-none" href="{% url 'bike_details' bike.id %}">
+          <div class="card">
+            <div class="card-img-wrap">
+              <img
+                class="card-img-top"
+                src="{{bike.bike_photo_1.url}}"
+                alt=""
+              />
+              <span class="featured-badge"
+                ><i class="fa-solid fa-star"></i
+              ></span>
+              <span class="price-badge rounded"
+                ><span class="me-1">&#2547;</span>{{bike.price|intcomma}}</span
+              >
+            </div>
+            <div class="card-body text-center my-4">
+              <h1 class="card-title">{{bike.bike_name}}</h1>
+              <span class="text-secondary">
+                <i class="fa-solid fa-location-dot text-danger me-1"></i
+                >{{bike.district}}, {{bike.division}} Division
+              </span>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <span
+                    ><i class="fa-solid fa-motorcycle text-danger me-1"></i
+                    >{{bike.cc}}<span>cc</span></span
+                  >
+                </div>
+                <div class="col">
+                  <span
+                    ><i class="fa-solid fa-calendar-days text-danger me-1"></i
+                    >{{bike.year}}</span
+                  >
+                </div>
+                <div class="col-auto">
+                  <span
+                    ><i class="fa-solid fa-gauge text-danger me-1"></i
+                    >{{bike.driven|intcomma}}<span>km</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+      <!-- single featured bike end -->
+    </div>
+  </div>
+</section>
+<!-- featured bikes section end -->
+<!-- latest bikes section -->
+<section id="latest-bikes-section" class="py-5">
+  <div class="container">
+    <!-- section title -->
+    <div class="section-title text-center my-5">
+      <h3 class="fs-1">Latest<span class="text-danger ms-1">Bikes</span></h3>
+      <p class="text-secondary">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
+        fugiat.
+      </p>
+    </div>
+    <!-- section title end -->
+    <div class="row">
+      <!-- single latest bike -->
+      {% for bike in latest_bikes %}
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mb-sm-4">
+        <div class="single-latest-bike">
+          <a class="text-decoration-none" href="{% url 'bike_details' bike.id %}">
+            <div class="card">
+              <div class="card-img-wrap">
+                <img
+                  class="card-img-top"
+                  src="{{bike.bike_photo_1.url}}"
+                  alt=""
+                />
+                <span class="price-badge rounded"
+                  ><span class="me-1">&#2547;</span>{{bike.price|intcomma}}</span
+                >
+              </div>
+              <div class="card-body my-2">
+                <h1 class="card-title">{{bike.bike_name}}</h1>
+                <span class="text-secondary">
+                  <i class="fa-solid fa-location-dot text-danger me-1"></i
+                  >{{bike.district}}, {{bike.division}} Division
+                </span>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col">
+                    <span
+                      ><i class="fa-solid fa-motorcycle text-danger me-1"></i
+                      >{{bike.cc}}<span>cc</span></span
+                    >
+                  </div>
+                  <div class="col">
+                    <span
+                      ><i class="fa-solid fa-calendar-days text-danger me-1"></i
+                      >{{bike.year}}</span
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <span
+                      ><i class="fa-solid fa-gauge text-danger me-1"></i
+                      >{{bike.driven|intcomma}}<span>km</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- single latest bike end -->
+    </div>
+    <div class="text-center mt-2">
+      <a
+        class="btn btn-lg btn-outline-danger text-uppercase"
+        href="{% url 'bikes' %}"
+        style="--bs-btn-padding-y: 0.5rem; --bs-btn-padding-x: 2rem"
+        >View more</a
+      >
+    </div>
+  </div>
+</section>
+<!-- latest bikes section end -->
+<!-- stats section -->
+<section id="stats-section" class="bg-danger-subtle">
+  <div class="container">
+    <div class="row">
+      <!-- single stats -->
+      <div class="col-12 col-md-4">
+        <div
+          class="single-stats float-none float-md-start mb-5 pb-4 mb-md-0 pb-md-0"
+        >
+          <div class="d-block text-center mb-3">
+            <img src="{% static 'images/icons/motorcycle.png' %}" alt="" />
+          </div>
+          <div class="d-block text-center">
+            <span class="counter text-danger">1735</span>
+            <h4 class="mt-3">Motorcycles Sold</h4>
+          </div>
+        </div>
+      </div>
+      <!-- single stats end -->
+      <!-- single stats -->
+      <div class="col-12 col-md-4">
+        <div class="single-stats mb-5 pb-4 mb-md-0 pb-md-0">
+          <div class="d-block text-center mb-3">
+            <img
+              src="{% static 'images/icons/24-hours-support.png' %}"
+              alt=""
+            />
+          </div>
+          <div class="d-block text-center">
+            <span class="text-danger">24/7</span>
+            <h4 class="mt-3">Customer Support</h4>
+          </div>
+        </div>
+      </div>
+      <!-- single stats end -->
+      <!-- single stats -->
+      <div class="col-12 col-md-4">
+        <div class="single-stats float-none float-md-end">
+          <div class="d-block text-center mb-3">
+            <img src="{% static 'images/icons/customer-review.png' %}" alt="" />
+          </div>
+          <div class="d-block text-center">
+            <span class="counter text-danger d-inline">1735</span>
+            <span class="fs-1 text-danger">+</span>
+            <h4 class="d-block mt-2">Happy Customers</h4>
+          </div>
+        </div>
+      </div>
+      <!-- single stats end -->
+    </div>
+  </div>
+</section>
+<!-- stats section end -->
+<!-- team section -->
+<section id="team-section" class="py-5">
+  <div class="container">
+    <!-- section title -->
+    <div class="section-title text-center my-5">
+      <h3 class="fs-1">Executive<span class="text-danger ms-1">Team</span></h3>
+      <p class="text-secondary">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
+        fugiat.
+      </p>
+    </div>
+    <!-- section title end -->
+    <div id="teamSection" class="owl-carousel owl-theme">
+      <!-- single team member -->
+      {% for team in teams %}
+      <div class="single-member">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="{{team.photo.url}}"
+            alt=""
+          />
+          <div class="card-body">
+            <h4 class="text-danger">{{team.first_name}} {{team.last_name}}</h4>
+            <p>{{team.designation}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- single team member end -->
+    </div>
+  </div>
+</section>
+<!-- team section end -->
+{% endblock content %}

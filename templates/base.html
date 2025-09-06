@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BikeKinbo - {% block title %}{% endblock title %}</title>
+    <!-- favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'images/favicon/apple-touch-icon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/favicon/favicon-16x16.png' %}"
+    />
+    <link
+      rel="manifest"
+      href="{% static 'images/favicon/site.webmanifest' %}"
+    />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <!-- owl carousel css -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/owl.theme.default.min.css' %}"
+    />
+    <!-- fonts css -->
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body>
+    {% include 'includes/header.html' %}
+    {% block content %}{% endblock content %}
+    {% include 'includes/footer.html' %}
+    <!-- jquery -->
+    <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!-- fontawesome js -->
+    <script src="{% static 'js/all.min.js' %}"></script>
+    <!-- owl carousel js -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!-- waypoints js -->
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <!-- counter up js -->
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <!-- main js -->
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

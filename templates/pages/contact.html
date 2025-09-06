@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock title %}
+{% block content %}
+<!-- page banner section -->
+<section id="page-banner-section">
+  <div class="banner">
+    <div class="overlay"></div>
+    <div class="wrapper">
+      <h3 class="mb-2">Contact Us</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, repellat!
+      </p>
+      <!-- breadcrumb -->
+      <nav class="breadcrumb d-flex justify-content-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a class="text-decoration-none link-danger" href="{% url 'index' %}"
+              >Home</a
+            >
+          </li>
+          <li class="breadcrumb-item active">Contact</li>
+        </ol>
+      </nav>
+      <!-- breadcrumb end -->
+    </div>
+  </div>
+</section>
+<!-- page banner section end -->
+<!-- contact us section -->
+<section id="contact-us-section" class="bg-white py-5">
+  <div class="container">
+    <div class="row">
+      <!-- contact form -->
+      <div class="col-12 col-lg-8">
+        <div class="contact-form">
+          {% include 'includes/messages.html' %}
+          <form class="row g-3" action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            <div class="col-md-6">
+              <input class="form-control" type="text" placeholder="Full Name" name="full_name" required />
+            </div>
+            <div class="col-md-6">
+              <input
+                class="form-control"
+                type="email"
+                placeholder="Email Address"
+                name="email_address"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="text" placeholder="Subject" name="subject" required />
+            </div>
+            <div class="col-md-6">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Phone Number"
+                name="phone_number"
+                required
+              />
+            </div>
+            <div class="col-md-12">
+              <textarea
+                class="form-control"
+                name="message"
+                id=""
+                cols="30"
+                rows="5"
+                placeholder="Write Message"
+                required
+              ></textarea>
+            </div>
+            <div class="col-md-12 text-center mt-4">
+              <button
+                class="btn btn-lg btn-danger text-uppercase"
+                type="submit"
+              >
+                <i class="fa-solid fa-paper-plane me-1"></i>Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- contact form end -->
+      <!-- contact info -->
+      <div class="col-12 col-lg-4 mt-5 mt-lg-0">
+        <div class="contact-info">
+          <div class="card">
+            <div class="card-body p-4">
+              <!-- contact box wrap -->
+              <div class="contact-box-wrap">
+                <div class="contact-box d-flex align-items-center mb-4">
+                  <div class="icon text-danger me-3">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div class="details">
+                    <h5>Phone:</h5>
+                    <a
+                      class="text-decoration-none text-secondary"
+                      href="tel:{{setting.company_phone_number}}"
+                      >{{setting.company_phone_number}}</a
+                    >
+                  </div>
+                </div>
+                <div class="contact-box d-flex align-items-center mb-4">
+                  <div class="icon text-danger me-3">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div class="details">
+                    <h5>Email:</h5>
+                    <a
+                      class="text-decoration-none text-secondary"
+                      href="mailto:{{setting.company_email}}"
+                      >{{setting.company_email}}</a
+                    >
+                  </div>
+                </div>
+                <div class="contact-box d-flex align-items-center mb-4">
+                  <div class="icon text-danger me-3">
+                    <i class="fa-solid fa-fax"></i>
+                  </div>
+                  <div class="details">
+                    <h5>Fax:</h5>
+                    <a
+                      class="text-decoration-none text-secondary"
+                      href="fax:{{setting.company_fax}}"
+                      >{{setting.company_fax}}</a
+                    >
+                  </div>
+                </div>
+                <div class="contact-box d-flex align-items-center">
+                  <div class="icon text-danger me-4">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div class="details">
+                    <h5>Address:</h5>
+                    <p class="text-decoration-none text-secondary">{{setting.company_address}}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- contact box wrap end -->
+              <!-- socials widget -->
+              <div class="socials-widget mt-5">
+                <h3 class="text-danger mb-3">Connect with us</h3>
+                <ul>
+                  <li>
+                    <a class="facebook-bg" href="{{setting.facebook_link}}" target="_blank"
+                      ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="twitter-bg" href="{{setting.twitter_link}}" target="_blank"
+                      ><i class="fa-brands fa-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="instagram-bg" href="{{setting.instagram_link}}" target="_blank"
+                      ><i class="fa-brands fa-instagram"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="youtube-bg" href="{{setting.youtube_link}}" target="_blank"
+                      ><i class="fa-brands fa-youtube"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="linkedin-bg" href="{{setting.linkedin_link}}" target="_blank"
+                      ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+              <!-- socials widget end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- contact info end -->
+    </div>
+  </div>
+</section>
+<!-- contact us section end -->
+{% endblock content %}

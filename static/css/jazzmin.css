@@ -1,0 +1,23 @@
+.brand-text {
+  font-size: 32px;
+  font-weight: bold !important;
+}
+.brand-link {
+  overflow: auto;
+  display: flex;
+  align-items: center;
+
+  scrollbar-width: none !important;
+}
+body:not(.layout-fixed) .main-sidebar .sidebar {
+  overflow: visible;
+}
+.user-panel {
+  display: none !important;
+}
+.elevation-3 {
+  box-shadow: none !important;
+}
+.form-control:focus {
+  border-color: #dc3545 !important;
+}
